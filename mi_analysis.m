@@ -47,7 +47,7 @@ classdef mi_analysis < handle
                 x = xGroups{iGroup,1};
                 y = yGroups{iGroup,1};
 		
-		if obj.objData.reparamData == 1
+                if obj.objData.reparamData == 1
                     for iDimension = 1:size(x,1)
                         x(iDimension,:) = obj.objData.reparameterizeData(x(iDimension,:));
                     end
