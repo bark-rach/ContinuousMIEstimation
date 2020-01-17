@@ -25,10 +25,10 @@ classdef mi_data_neural < mi_data
             p.addParameter('cycleTimes', default_cycleTimes, validate_cycleTimes);
             
             % Parameter timebase
-            default_timebase = 'time';
-            valid_timebases = {'time', 'phase'};
-            validate_timebase = @(x) assert(ischar(x) && ismember(x,valid_timebases), 'timebase must be: time, phase');
-            p.addParameter('timeBase', default_timebase, validate_timebase);
+            default_timeBase = 'time';
+            valid_timeBases = {'time', 'phase'};
+            validate_timeBase = @(x) assert(ischar(x) && ismember(x,valid_timeBases), 'timeBase must be: time, phase');
+            p.addParameter('timeBase', default_timeBase, validate_timeBase);
             
             % Parameter name
             default_name = 'noname';
@@ -117,10 +117,10 @@ classdef mi_data_neural < mi_data
             p.addRequired('cycleTimes', validate_cycleTimes);
 
             % Parameter timebase
-            default_timebase = 'time';
-            valid_timebases = {'time', 'phase'};
-            validate_timebase = @(x) assert(ischar(x) && ismember(x,valid_timebases), 'timebase must be: time, phase');
-            p.addParameter('timeBase', default_timebase, validate_timebase);
+            default_timeBase = 'time';
+            valid_timeBases = {'time', 'phase'};
+            validate_timeBase = @(x) assert(ischar(x) && ismember(x,valid_timeBases), 'timeBase must be: time, phase');
+            p.addParameter('timeBase', default_timeBase, validate_timeBase);
 
             % Parameter name
             default_name = 'noname';
@@ -153,7 +153,7 @@ classdef mi_data_neural < mi_data
             cycle_spike_ts = nan(size(cycle_ts,1), max(cycle_spike_counts));
 
             
-            % AVG run time: 0.9658 s
+            % AVG run time: 0.9658s
             for cycle_ix = 1:(size(cycle_ts,1))
                cycle_spikes_ix = find((spike_ts > cycle_ts(cycle_ix,1)) & (spike_ts < cycle_ts(cycle_ix,2)));
                if ~isempty(cycle_spikes_ix)
