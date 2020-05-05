@@ -88,12 +88,12 @@ classdef mi_data_neural < mi_data
             
             % Find the number of spikes in each cycle
             % We include data that comes after the onset of the first cycle
-            % and before the onset of the last cycle
-            cycle_spike_counts = zeros(1,size(cycle_ts,1)-1);
+            % and before the offset of the last cycle
+            cycle_spike_counts = zeros(1,size(cycle_ts,1));
             
             % AVG run time: 0.4599 s
             for cycle_ix = 1:size(cycle_ts,1)
-                cycle_spike_counts(cycle_ix) = sum((spike_ts > cycle_ts(cycle_ix,1)) & (spike_ts < cycle_ts(cycle_ix,2)));
+                cycle_spike_counts(cycle_ix) = sum((spike_ts > cycle_ts(cycle_ix,1)) & (spike_ts <= cycle_ts(cycle_ix,2)));
             end
             
             
@@ -155,7 +155,7 @@ classdef mi_data_neural < mi_data
             
             % AVG run time: 0.9658s
             for cycle_ix = 1:(size(cycle_ts,1))
-               cycle_spikes_ix = find((spike_ts > cycle_ts(cycle_ix,1)) & (spike_ts < cycle_ts(cycle_ix,2)));
+               cycle_spikes_ix = find((spike_ts > cycle_ts(cycle_ix,1)) & (spike_ts <= cycle_ts(cycle_ix,2)));
                if ~isempty(cycle_spikes_ix)
                    cycle_spike_ts(cycle_ix,1:length(cycle_spikes_ix)) = spike_ts(cycle_spikes_ix) - cycle_ts(cycle_ix,1);
                end
